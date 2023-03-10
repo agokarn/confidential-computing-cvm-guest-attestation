@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 
+option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+
 #MUST be same as the version in the latest entry in debian/changelog file.
 project(azguestattestation VERSION 1.0.5)
 
@@ -27,23 +29,23 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/../external/SnpVmReport
 )
 
-add_library(${CMAKE_PROJECT_TARGET} SHARED ../../AttestationHelper.cpp
-                                           ../AttestationClientImpl.cpp
-                                           ../AttestationClient.cpp
-                                           ../AttestationParameters.cpp
-                                           ../TpmInfo.cpp
-                                           ../Logging.cpp
-                                           ../TpmUnseal.cpp
-                                           ../NativeConverter.cpp
-                                           ../AttestationLibUtils.cpp
-                                           ../ImdsOperations.cpp
-                                           ../IsolationInfo.cpp
-                                           ../HclReportParser.cpp
-                                           ../HttpClient.cpp
-                                           ../TpmCertOperations.cpp
-                                           ../ImdsClient.cpp
-                                           ../AttestationLibTelemetry.cpp
-                                           ${CMAKE_SOURCE_DIR}/../external/jsoncpp-0.10.7/src/jsoncpp.cpp)
+add_library(${CMAKE_PROJECT_TARGET} ../../AttestationHelper.cpp
+                                    ../AttestationClientImpl.cpp
+                                    ../AttestationClient.cpp
+                                    ../AttestationParameters.cpp
+                                    ../TpmInfo.cpp
+                                    ../Logging.cpp
+                                    ../TpmUnseal.cpp
+                                    ../NativeConverter.cpp
+                                    ../AttestationLibUtils.cpp
+                                    ../ImdsOperations.cpp
+                                    ../IsolationInfo.cpp
+                                    ../HclReportParser.cpp
+                                    ../HttpClient.cpp
+                                    ../TpmCertOperations.cpp
+                                    ../ImdsClient.cpp
+                                    ../AttestationLibTelemetry.cpp
+                                    ${CMAKE_SOURCE_DIR}/../external/jsoncpp-0.10.7/src/jsoncpp.cpp)
                                            
 find_library(CURL_LIB NAMES curl PATHS /usr/local/attestationcurl/lib
                                            NO_DEFAULT_PATH)

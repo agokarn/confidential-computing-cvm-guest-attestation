@@ -20,7 +20,7 @@ find_library(CRYPTO_LIB NAMES crypto PATHS /usr/local/attestationssl/lib64
 find_library(SSL_LIB NAMES ssl PATHS /usr/local/attestationssl/lib64
                                            NO_DEFAULT_PATH)
 
-add_library(${CMAKE_PROJECT_TARGET} ${SOURCES})
+add_library(${CMAKE_PROJECT_TARGET} STATIC ${SOURCES})
 target_link_libraries(${CMAKE_PROJECT_TARGET} ${TSS2_LIBRARIES})
 target_link_libraries(${CMAKE_PROJECT_TARGET} ${CRYPTO_LIB})
 target_link_libraries(${CMAKE_PROJECT_TARGET} ${SSL_LIB})
