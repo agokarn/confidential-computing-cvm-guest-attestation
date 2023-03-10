@@ -7,8 +7,8 @@ project(azguestattestation VERSION 1.0.5)
 
 set(CMAKE_PROJECT_TARGET azguestattestation)
 
-find_package(Tss2 REQUIRED)
-include_directories(${TSS2_INCLUDE_DIRS})
+find_package(OpenSSL REQUIRED)
+find_package(RapidJSON REQUIRED)
 
 add_definitions (-DPLATFORM_UNIX)
 
@@ -50,6 +50,7 @@ add_library(${CMAKE_PROJECT_TARGET} ../../AttestationHelper.cpp
 find_library(CURL_LIB NAMES curl PATHS /usr/local/attestationcurl/lib
                                            NO_DEFAULT_PATH)
 
+target_include_directories(${CMAKE_PROJECT_TARGET} PRIVATE ${OPENSSL_INCLUDE_DIR} ${RAPIDJSON_INCLUDE_DIRS})
 target_link_libraries(${CMAKE_PROJECT_TARGET} Tpm2)
 target_link_libraries(${CMAKE_PROJECT_TARGET} ${CURL_LIB})
 
