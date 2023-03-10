@@ -25,8 +25,8 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/..
     ${CMAKE_CURRENT_SOURCE_DIR}/../..
     ${CMAKE_CURRENT_SOURCE_DIR}/../include
-    ${CMAKE_SOURCE_DIR}/../external/jsoncpp-0.10.7/src
-    ${CMAKE_SOURCE_DIR}/../external/SnpVmReport
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../../external/jsoncpp-0.10.7/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../../external/SnpVmReport
 )
 
 add_library(${CMAKE_PROJECT_TARGET} ../../AttestationHelper.cpp
@@ -45,11 +45,12 @@ add_library(${CMAKE_PROJECT_TARGET} ../../AttestationHelper.cpp
                                     ../TpmCertOperations.cpp
                                     ../ImdsClient.cpp
                                     ../AttestationLibTelemetry.cpp
-                                    ${CMAKE_SOURCE_DIR}/../external/jsoncpp-0.10.7/src/jsoncpp.cpp)
+                                    ../../../../external/jsoncpp-0.10.7/src/jsoncpp.cpp)
                                            
 find_library(CURL_LIB NAMES curl PATHS /usr/local/attestationcurl/lib
                                            NO_DEFAULT_PATH)
 
+target_include_directories(${CMAKE_PROJECT_TARGET} INTERFACE ../include)
 target_include_directories(${CMAKE_PROJECT_TARGET} PRIVATE ${OPENSSL_INCLUDE_DIR} ${RAPIDJSON_INCLUDE_DIRS})
 target_link_libraries(${CMAKE_PROJECT_TARGET} Tpm2)
 target_link_libraries(${CMAKE_PROJECT_TARGET} ${CURL_LIB})

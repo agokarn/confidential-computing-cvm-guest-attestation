@@ -24,8 +24,8 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../../lib
     ${CMAKE_CURRENT_SOURCE_DIR}/../../../LinuxTpm/include
     ${CMAKE_CURRENT_SOURCE_DIR}/../../lib/include
-    ${CMAKE_SOURCE_DIR}/../external/jsoncpp-0.10.7/src
-    ${CMAKE_SOURCE_DIR}/../external/SnpVmReport
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../../external/jsoncpp-0.10.7/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../../../external/SnpVmReport
 )
 
 find_path(CURL_INCLUDE_DIR NAMES curl PATHS /usr/local/attestationcurl/include
@@ -52,7 +52,7 @@ add_executable(${CMAKE_PROJECT_TARGET} ClientLibTests.cpp
                                        ../../lib/TpmCertOperations.cpp
                                        ../../lib/ImdsClient.cpp
                                        ../../lib/AttestationLibTelemetry.cpp
-                                       ${CMAKE_SOURCE_DIR}/../external/jsoncpp-0.10.7/src/jsoncpp.cpp)
+                                       ../../../../external/jsoncpp-0.10.7/src/jsoncpp.cpp)
 
 find_library(CURL_LIB NAMES curl PATHS /usr/local/attestationcurl/lib
                                            NO_DEFAULT_PATH)
