@@ -14,10 +14,10 @@ sudo apt-get install -y --fix-missing \
     libtool \
     libgcrypt-dev \
     gnulib \
-    g++ \
+    g++-12 \
     pkg-config \
     libjsoncpp-dev \
-    gcc \
+    gcc-12 \
     attr \
     squashfs-tools \
     cryptsetup-bin \
